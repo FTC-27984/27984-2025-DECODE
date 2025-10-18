@@ -21,8 +21,17 @@ android {
     packagingOptions {
         jniLibs.useLegacyPackaging true
     }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
 }
 
+// used for build debugging with deprecation issues
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs += ['-Xlint:deprecation']
+}
 dependencies {
     implementation project(':FtcRobotController')
     implementation 'dev.nextftc:ftc:1.0.0'
