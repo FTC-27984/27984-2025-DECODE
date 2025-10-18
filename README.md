@@ -10,6 +10,31 @@ To use this Android Studio project, you will need Android Studio Ladybug (2024.2
 
 To program your robot in Blocks or OnBot Java, you do not need Android Studio.
 
+## Commit Rules
+When committing to the repository, please use the following commit rules when making commit messages:
+
+- If updating any workflows or doing any repetitive tasks, use the following as your commit message:
+```bash
+chore: [the chore/task that you completed]
+```
+
+- If adding any feature or major change:
+```
+feat: [feature change]
+```
+
+- If working on any feature that is a Work In Progress:
+```
+WIP feat: [the main feature] - [what you worked on for this commit]
+```
+
+- If writing/updating documentation:
+```
+docs: [the documentation change]
+```
+
+Commit messages don't have to be essays; aim for around 7-12 words per commit message that are descriptive enough such that a contributor can understand what happened.
+
 ## Getting Started
 If you are new to robotics or new to the *FIRST* Tech Challenge, then you should consider reviewing the [FTC Blocks Tutorial](https://ftc-docs.firstinspires.org/programming_resources/blocks/Blocks-Tutorial.html) to get familiar with how to use the control system:
 
