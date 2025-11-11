@@ -38,11 +38,20 @@ tasks.withType(JavaCompile).configureEach {
     options.compilerArgs += ['-Xlint:deprecation']
 }
 dependencies {
-    implementation project(':FtcRobotController')
-//    implementation 'dev.nextftc:ftc:1.0.0'
-//    implementation 'dev.nextftc:hardware:1.0.0' // If you would like to use the hardware module
-//    implementation 'dev.nextftc.extensions:pedro:1.0.0' // pedro pathing using nextftc
-    implementation "com.bylazar:fullpanels" // ftc panels
-//    implementation 'dev.nextftc:control:1.0.0'
-//    implementation 'dev.nextftc:bindings:1.0.1'
+    implementation 'org.firstinspires.ftc:Inspection:11.0.0'
+    implementation 'org.firstinspires.ftc:Blocks:11.0.0'
+    //noinspection Aligned16KB
+    implementation 'org.firstinspires.ftc:RobotCore:11.0.0'
+    implementation 'org.firstinspires.ftc:RobotServer:11.0.0'
+    implementation 'org.firstinspires.ftc:OnBotJava:11.0.0'
+    implementation 'org.firstinspires.ftc:Hardware:11.0.0'
+    implementation 'org.firstinspires.ftc:FtcCommon:11.0.0'
+
+    implementation 'com.pedropathing:ftc:2.0.3'
+    implementation 'com.pedropathing:telemetry:1.0.0'
+
+    // implementation"page.j5155.AdvantageScope:lite:v26.0.0"
+    // implementation 'com.acmerobotics.dashboard:dashboard:0.5.0'
+    implementation 'com.bylazar:fullpanels:1.0.7'
+    implementation 'com.acmerobotics.dashboard:dashboard:0.4.15'
 }

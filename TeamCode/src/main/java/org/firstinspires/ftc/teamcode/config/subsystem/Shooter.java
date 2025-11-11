@@ -4,6 +4,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class Shooter {
+
     private final DcMotor catapult1;
     private final DcMotor catapult2;
 
@@ -48,8 +49,10 @@ public class Shooter {
         mode = Mode.HOLD;
         catapult1.setPower(CATAPULT_HOLD_POWER);
         catapult2.setPower(CATAPULT_HOLD_POWER);
-        catapult1.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        catapult2.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+    }
+
+    public void stop() {
+        hold();
     }
 
     public Mode getMode() {
@@ -58,5 +61,9 @@ public class Shooter {
 
     public double getPower() {
         return catapult1.getPower();
+    }
+
+    public void periodic() {
+        // Call from Robot.periodic()
     }
 }
