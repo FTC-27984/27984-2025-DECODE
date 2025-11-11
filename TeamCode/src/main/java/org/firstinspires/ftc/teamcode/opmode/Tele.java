@@ -1,81 +1,82 @@
 package org.firstinspires.ftc.teamcode.opmode;
 
 import com.acmerobotics.dashboard.FtcDashboard;
-import com.acmerobotics.dashboard.telemetry.TelemetryPacket;
 import com.acmerobotics.dashboard.telemetry.MultipleTelemetry;
+import com.pedropathing.geometry.Pose;
 import com.pedropathing.util.Timer;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import org.firstinspires.ftc.teamcode.config.Robot;
+import org.firstinspires.ftc.teamcode.config.util.Alliance;
 
-@TeleOp
+@TeleOp(name = "TeleOp", group = "Main")
 public class Tele extends OpMode {
 
-    Robot r;
-    MultipleTelemetry telemetryM;
+    private Robot r;
+    private MultipleTelemetry telemetryM;
 
-    private boolean shoot = false;
-    private double intakeOn = 0;
-    private final Timer autoFlipTimer = new Timer();
+    private boolean shootMode = false;
+    private boolean intakeIn = false;
+    private boolean intakeOut = false;
 
     @Override
     public void init() {
-        r = new Robot(hardwareMap);
-
-        telemetryM = new MultipleTelemetry(FtcDashboard.getInstance().getTelemetry());
-
-        // Make sure shooter starts in hold mode
-        r.shooter.hold();
+        r = new Robot(hardwareMap, Alliance.BLUE);
+        telemetryM = new MultipleTelemetry(telemetry, FtcDashboard.getInstance().getTelemetry());
     }
 
     @Override
     public void loop() {
-        r.periodic();
+        // --- Drive control (mecanum) ---
+        double forward = -gamepad1.left_stick_y;
+        double strafe  = -gamepad1.left_stick_x;
+        double rotate  = -gamepad1.right_stick_x * 0.7; // scale rotation
 
-        // Intake control
+        r.drive.driveMecanum(forward, strafe, rotate);
+
+        // --- Intake control ---
         if (gamepad1.right_bumper) {
-            intakeOn = intakeOn == 1 ? 0 : 1; // toggle spinIn
-        }
-        if (gamepad1.left_bumper) {
-            intakeOn = intakeOn == 2 ? 0 : 2; // toggle spinOut
+            intakeIn = !intakeIn;
+            intakeOut = false;
+        } else if (gamepad1.left_bumper) {
+            intakeOut = !intakeOut;
+            intakeIn = false;
         }
 
-        if (intakeOn == 1) r.intake.in();
-        else if (intakeOn == 2) r.intake.out();
-        else r.intake.stop();
+        if (intakeIn) {
+            r.intake.in();
+        } else if (intakeOut) {
+            r.intake.out();
+        } else {
+            r.intake.stop();
+        }
 
-        // Shooter control
-        if (shoot) {
+        // --- Shooter control ---
+        if (gamepad1.a) {
+            shootMode = !shootMode;
+        }
+
+        if (shootMode) {
             r.shooter.shoot();
         } else {
             r.shooter.hold();
         }
 
-        // Toggle shooting with B button
-        if (gamepad1.b) {
-            shoot = !shoot;
-            autoFlipTimer.resetTimer();
-        }
-
-        // Simple auto-flip logic (example timing)
-        if (shoot && autoFlipTimer.getElapsedTimeSeconds() > 2) {
-            r.shooter.hold(); // stop after 2 seconds
-            shoot = false;
-        }
-
-        // Dashboard telemetry
-        TelemetryPacket packet = new TelemetryPacket();
-        packet.addLine("Shooter Power: " + r.shooter.getPower());
-        packet.addLine("Intake State: " + intakeOn);
-        FtcDashboard.getInstance().sendTelemetryPacket(packet);
-
+        // --- Telemetry ---
+        telemetryM.addData("Drive Forward", forward);
+        telemetryM.addData("Drive Strafe", strafe);
+        telemetryM.addData("Drive Rotate", rotate);
+        telemetryM.addData("Shooter Mode", shootMode ? "Shooting" : "Idle");
+        telemetryM.addData("Intake In", intakeIn);
+        telemetryM.addData("Intake Out", intakeOut);
         telemetryM.addData("Shooter Power", r.shooter.getPower());
-        telemetryM.addData("Intake State", intakeOn);
         telemetryM.update();
     }
 
     @Override
     public void stop() {
         r.stop();
+        r.drive.stop();
+        r.shooter.hold();
     }
 }
