@@ -9,6 +9,7 @@ import org.firstinspires.ftc.teamcode.config.pedro.Constants;
 import org.firstinspires.ftc.teamcode.config.subsystem.Drive;
 import org.firstinspires.ftc.teamcode.config.subsystem.Intake;
 import org.firstinspires.ftc.teamcode.config.subsystem.Shooter;
+import org.firstinspires.ftc.teamcode.config.util.Alliance;
 
 public class Robot {
 
@@ -23,8 +24,9 @@ public class Robot {
     public static Pose endPose;
     public static Pose defaultPose = new Pose(32, 30.25, 0);
     public static Pose shootTarget = new Pose(6, 138, 0);
+    public double alliance;
 
-    public Robot(HardwareMap hardwareMap) {
+    public Robot(HardwareMap hardwareMap, Alliance blue) {
         intake = new Intake(hardwareMap);
         shooter = new Shooter(hardwareMap);
         drive = new Drive(hardwareMap);
