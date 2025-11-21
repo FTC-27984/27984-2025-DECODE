@@ -8,18 +8,18 @@ import com.pedropathing.paths.PathChain;
 
 public class RedAllianceGoalSide {
 
-    public PathChain Path1;
-    public PathChain Path2EndWithShoot;
-    public PathChain Path3Endwithopenintake;
-    public PathChain Path4EndwithclosedIntake;
-    public PathChain Path5Endwithshoot;
-    public PathChain Path6Openwithopenintake;
-    public PathChain Path7Endwithclosedintake;
-    public PathChain Path8Endwithshoot;
-    public PathChain Path9;
-    public PathChain Path10;
+    public PathChain RGPath1;
+    public PathChain RGPath2EndWithShoot;
+    public PathChain RGPath3Endwithopenintake;
+    public PathChain RGPath4EndwithclosedIntake;
+    public PathChain RGPath5Endwithshoot;
+    public PathChain RGPath6Openwithopenintake;
+    public PathChain RGPath7Endwithclosedintake;
+    public PathChain RGPath8Endwithshoot;
+    public PathChain RGPath9;
+    public PathChain RGPath10;
     public RedAllianceGoalSide(Follower follower) {
-        Path1 = follower
+        RGPath1 = follower
                 .pathBuilder()
                 .addPath(
                         new BezierLine(new Pose(123.000, 123.700), new Pose(120.738, 122.068))
@@ -27,7 +27,7 @@ public class RedAllianceGoalSide {
                 .setTangentHeadingInterpolation()
                 .build();
 
-        Path2EndWithShoot = follower
+        RGPath2EndWithShoot = follower
                 .pathBuilder()
                 .addPath(
                         new BezierLine(new Pose(120.738, 122.068), new Pose(123.175, 123.840))
@@ -35,7 +35,7 @@ public class RedAllianceGoalSide {
                 .setTangentHeadingInterpolation()
                 .build();
 
-        Path3Endwithopenintake = follower
+        RGPath3Endwithopenintake = follower
                 .pathBuilder()
                 .addPath(
                         new BezierCurve(
@@ -48,7 +48,7 @@ public class RedAllianceGoalSide {
                 .setReversed()
                 .build();
 
-        Path4EndwithclosedIntake = follower
+        RGPath4EndwithclosedIntake = follower
                 .pathBuilder()
                 .addPath(
                         new BezierLine(new Pose(100.357, 83.298), new Pose(124.062, 83.520))
@@ -56,7 +56,7 @@ public class RedAllianceGoalSide {
                 .setTangentHeadingInterpolation()
                 .build();
 
-        Path5Endwithshoot = follower
+        RGPath5Endwithshoot = follower
                 .pathBuilder()
                 .addPath(
                         new BezierCurve(
@@ -68,7 +68,7 @@ public class RedAllianceGoalSide {
                 .setTangentHeadingInterpolation()
                 .build();
 
-        Path6Openwithopenintake = follower
+        RGPath6Openwithopenintake = follower
                 .pathBuilder()
                 .addPath(
                         new BezierCurve(
@@ -81,7 +81,7 @@ public class RedAllianceGoalSide {
                 .setReversed()
                 .build();
 
-        Path7Endwithclosedintake = follower
+        RGPath7Endwithclosedintake = follower
                 .pathBuilder()
                 .addPath(
                         new BezierLine(new Pose(100.135, 59.594), new Pose(123.840, 59.815))
@@ -89,7 +89,7 @@ public class RedAllianceGoalSide {
                 .setTangentHeadingInterpolation()
                 .build();
 
-        Path8Endwithshoot = follower
+        RGPath8Endwithshoot = follower
                 .pathBuilder()
                 .addPath(
                         new BezierCurve(
@@ -101,7 +101,7 @@ public class RedAllianceGoalSide {
                 .setTangentHeadingInterpolation()
                 .build();
 
-        Path9 = follower
+        RGPath9 = follower
                 .pathBuilder()
                 .addPath(
                         new BezierCurve(
@@ -114,7 +114,7 @@ public class RedAllianceGoalSide {
                 .setReversed()
                 .build();
 
-        Path10 = follower
+        RGPath10 = follower
                 .pathBuilder()
                 .addPath(
                         new BezierLine(new Pose(114.978, 70.892), new Pose(128.271, 71.335))
