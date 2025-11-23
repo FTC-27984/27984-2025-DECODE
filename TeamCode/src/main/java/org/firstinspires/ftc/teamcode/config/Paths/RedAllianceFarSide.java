@@ -15,7 +15,7 @@ public class RedAllianceFarSide {
     public PathChain Path5;
     public PathChain Path6;
 
-    public void Paths(Follower follower) {
+    public RedAllianceFarSide(Follower follower) {
         Path1 = follower
                 .pathBuilder()
                 .addPath(
