@@ -4,7 +4,10 @@ import com.pedropathing.follower.Follower;
 import com.pedropathing.geometry.BezierLine;
 import com.pedropathing.geometry.Pose;
 import com.pedropathing.paths.PathChain;
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
+
+@Autonomous(name = "RedFarSide(No Autonomous on other team)", group = "Pedro Pathing")
 public class RedAllianceFarSide {
 
 
