@@ -28,6 +28,13 @@ android {
     }
 
     compileSdk 35
+    sourceSets {
+        main {
+            java {
+                srcDirs 'src\\main\\java', 'src\\main\\java\\org.firstinspires.ftc.teamcode\\config\\paths'
+            }
+        }
+    }
     defaultConfig {
         minSdk 24
     }
