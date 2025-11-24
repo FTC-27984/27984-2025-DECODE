@@ -33,8 +33,8 @@ public class Constants {
 
             // Encoder directions (change if your tuning looks wrong)
             .leftFrontEncoderDirection(Encoder.FORWARD)
-            .leftRearEncoderDirection(Encoder.FORWARD)
-            .rightFrontEncoderDirection(Encoder.FORWARD)
+            .leftRearEncoderDirection(Encoder.REVERSE)
+            .rightFrontEncoderDirection(Encoder.REVERSE)
             .rightRearEncoderDirection(Encoder.FORWARD);
 
 
