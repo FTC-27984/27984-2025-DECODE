@@ -15,6 +15,7 @@ import com.bylazar.field.PanelsField;
 import com.bylazar.field.Style;
 import com.bylazar.telemetry.PanelsTelemetry;
 import com.bylazar.telemetry.TelemetryManager;
+import com.pedropathing.ErrorCalculator;
 import com.pedropathing.follower.Follower;
 import com.pedropathing.geometry.*;
 import com.pedropathing.math.*;
@@ -790,6 +791,9 @@ class TranslationalTuner extends OpMode {
         }
 
         telemetryM.debug("Push the robot laterally to test the Translational PIDF(s).");
+        telemetryM.addData("Zero Line", 0);
+        telemetryM.addData("Error X", follower.errorCalculator.getTranslationalError().getXComponent());
+        telemetryM.addData("Error Y", follower.errorCalculator.getTranslationalError().getYComponent());
         telemetryM.update(telemetry);
     }
 }
@@ -862,6 +866,8 @@ class HeadingTuner extends OpMode {
         }
 
         telemetryM.debug("Turn the robot manually to test the Heading PIDF(s).");
+        telemetryM.addData("Zero Line", 0);
+        telemetryM.addData("Error", follower.errorCalculator.getHeadingError());
         telemetryM.update(telemetry);
     }
 }
@@ -941,6 +947,8 @@ class DriveTuner extends OpMode {
         }
 
         telemetryM.debug("Driving forward?: " + forward);
+        telemetryM.addData("Zero Line", 0);
+        telemetryM.addData("Error", follower.errorCalculator.getDriveErrors()[1]);
         telemetryM.update(telemetry);
     }
 }
@@ -1210,21 +1218,15 @@ class Circle extends OpMode {
  * @author Lazar - 19234
  * @version 1.1, 5/19/2025
  */
-/**
- * This is the Drawing class. It handles the drawing of stuff on Panels Dashboard, like the robot.
- *
- * @author Lazar - 19234
- * @version 1.1, 5/19/2025
- */
 class Drawing {
     public static final double ROBOT_RADIUS = 9; // woah
     private static final FieldManager panelsField = PanelsField.INSTANCE.getField();
 
     private static final Style robotLook = new Style(
-            "", "#3F51B5", 0.0
+            "", "#3F51B5", 0.75
     );
     private static final Style historyLook = new Style(
-            "", "#4CAF50", 0.0
+            "", "#4CAF50", 0.75
     );
 
     /**
@@ -1236,7 +1238,7 @@ class Drawing {
 
     /**
      * This draws everything that will be used in the Follower's telemetryDebug() method. This takes
-     * a Follower as an input, so an instance of the DashboardDrawingHandler class is not needed.
+     * a Follower as an input, so an instance of the DashbaordDrawingHandler class is not needed.
      *
      * @param follower Pedro Follower instance.
      */
