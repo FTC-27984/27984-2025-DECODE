@@ -5,7 +5,10 @@ import com.pedropathing.geometry.BezierCurve;
 import com.pedropathing.geometry.BezierLine;
 import com.pedropathing.geometry.Pose;
 import com.pedropathing.paths.PathChain;
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
+
+@Autonomous(name = "RedGoalSide", group = "Pedro Pathing")
 public class RedAllianceGoalSide {
 
     public PathChain RGPath1;
