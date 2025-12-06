@@ -11,8 +11,8 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 public class Catapult {
 
     // --- Hardware and Constants ---
-    private DcMotor catapult1 = null;
-    private DcMotor catapult2 = null;
+    private static DcMotor catapult1 = null;
+    private static DcMotor catapult2 = null;
 
     /**
      * Defines the desired state or mode of the catapult.
@@ -50,7 +50,7 @@ public class Catapult {
      * This method combines the logic previously handled in the TeleOp loop.
      * @param mode The desired state (UP, DOWN, or BRAKE).
      */
-    public void setCatapultPower(Mode mode) {
+    public static void setCatapultPower(Mode mode) {
         double power;
         DcMotor.ZeroPowerBehavior behavior = DcMotor.ZeroPowerBehavior.BRAKE;
 
@@ -73,7 +73,6 @@ public class Catapult {
                 // Keeps the motor from coasting
                 break;
         }
-
         // Apply power and behavior to both motors
         catapult1.setZeroPowerBehavior(behavior);
         catapult2.setZeroPowerBehavior(behavior);

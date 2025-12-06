@@ -10,14 +10,14 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 public class Intake {
 
     // --- Hardware and Constants ---
-    private DcMotor intake = null;
+    private static DcMotor intake = null;
 
     /**
      * Defines the desired state or mode of the intake.
      */
     public enum Mode {
         IN,
-        OUT,
+        UP,
         OFF
     }
 
@@ -38,18 +38,18 @@ public class Intake {
      * Sets the power of the intake motor based on the desired mode.
      * @param mode The desired state (IN, OUT, or OFF).
      */
-    public void setIntakePower(Mode mode) {
+    public static void setIntakePower(Mode mode) {
         double power;
         // Power constants derived from your original TeleOp
         double INTAKE_IN_POWER = 1.0;
-        double INTAKE_OUT_POWER = -0.9;
+        double INTAKE_UP_POWER = -0.9;
         double INTAKE_OFF_POWER = 0.0;
         switch (mode) {
             case IN:
                 power = INTAKE_IN_POWER;
                 break;
-            case OUT:
-                power = INTAKE_OUT_POWER;
+            case UP:
+                power = INTAKE_UP_POWER;
                 break;
             case OFF:
             default:

@@ -6,6 +6,9 @@ import com.pedropathing.geometry.Pose;
 import com.pedropathing.paths.PathChain;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 
+import org.firstinspires.ftc.teamcode.config.subsystem.Catapult;
+import org.firstinspires.ftc.teamcode.config.subsystem.Intake;
+
 @Autonomous(name = "BlueGoalSide", group = "Pedro Pathing")
 public class BlueAllianceGoalSide {
     public PathChain BGPath1;
@@ -39,6 +42,11 @@ public class BlueAllianceGoalSide {
                 )
                 .setTangentHeadingInterpolation()
                 .build();
+
+        Catapult.setCatapultPower(Catapult.Mode.UP);
+        Catapult.setCatapultPower(Catapult.Mode.DOWN);
+
+
         BGPath3Endwithopenintake = follower
                 .pathBuilder()
                 .addPath(
@@ -51,6 +59,9 @@ public class BlueAllianceGoalSide {
                 .setTangentHeadingInterpolation()
                 .setReversed()
                 .build();
+
+        Intake.setIntakePower(Intake.Mode.UP);
+
         BGPath4EndwithclosedIntake = follower
                 .pathBuilder()
                 .addPath(
@@ -61,6 +72,9 @@ public class BlueAllianceGoalSide {
                 )
                 .setTangentHeadingInterpolation()
                 .build();
+
+        Intake.setIntakePower(Intake.Mode.OFF);
+
         BGPath5Endwithshoot = follower
                 .pathBuilder()
                 .addPath(
@@ -72,6 +86,11 @@ public class BlueAllianceGoalSide {
                 )
                 .setTangentHeadingInterpolation()
                 .build();
+
+        Catapult.setCatapultPower(Catapult.Mode.UP);
+        Catapult.setCatapultPower(Catapult.Mode.DOWN);
+
+
         BGPath6Openwithopenintake = follower
                 .pathBuilder()
                 .addPath(
@@ -84,6 +103,9 @@ public class BlueAllianceGoalSide {
                 .setTangentHeadingInterpolation()
                 .setReversed()
                 .build();
+
+        Intake.setIntakePower(Intake.Mode.UP);
+
         BGPath7Endwithclosedintake = follower
                 .pathBuilder()
                 .addPath(
@@ -94,6 +116,10 @@ public class BlueAllianceGoalSide {
                 )
                 .setTangentHeadingInterpolation()
                 .build();
+
+        Intake.setIntakePower(Intake.Mode.OFF);
+
+
         BGPath8Endwithshoot = follower
                 .pathBuilder()
                 .addPath(
@@ -105,6 +131,11 @@ public class BlueAllianceGoalSide {
                 )
                 .setTangentHeadingInterpolation()
                 .build();
+
+        Catapult.setCatapultPower(Catapult.Mode.UP);
+        Catapult.setCatapultPower(Catapult.Mode.DOWN);
+
+
         BGPath9 = follower
                 .pathBuilder()
                 .addPath(
